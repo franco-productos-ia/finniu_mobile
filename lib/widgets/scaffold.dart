@@ -54,8 +54,12 @@ class _CustomScaffoldStartState extends ConsumerState<CustomScaffoldStart> {
                 onToggle: (value) {
                   Preferences.isDarkMode = value;
                   value
-                      ? ref.read(settingsNotifierProvider.notifier).setDarkMode()
-                      : ref.read(settingsNotifierProvider.notifier).setLightMode();
+                      ? ref
+                          .read(settingsNotifierProvider.notifier)
+                          .setDarkMode()
+                      : ref
+                          .read(settingsNotifierProvider.notifier)
+                          .setLightMode();
                   setState(() {});
                 },
               ),
@@ -93,11 +97,11 @@ class _CustomScaffoldReturnState extends State<CustomScaffoldReturn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         elevation: 0.0,
         scrolledUnderElevation: 0,
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         leading: const CustomReturnButton(),
       ),
       body: widget.body,
@@ -147,11 +151,11 @@ class CustomScaffoldReturnLogo extends ConsumerWidget {
     final themeProvider = ref.watch(settingsNotifierProvider);
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       bottomNavigationBar: !hideNavBar ? const BottomNavigationBarHome() : null,
       appBar: AppBar(
         scrolledUnderElevation: 0,
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
         leading: !hideReturnButton
             ? (themeProvider.isDarkMode
